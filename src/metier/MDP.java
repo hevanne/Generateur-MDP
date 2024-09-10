@@ -152,8 +152,14 @@ public class MDP{
 	public String toString(){ return motDePasse; }
 
 	public static void main(String[] args) {
-		MDP mdp = new MDP(15, true, true);
+		MDP mdp1 = new MDP(15, true, true);
+		MDP mdp2 = new MDP(35, true, false);
+		MDP mdp3 = new MDP(3, false, false);
+		MDP mdp4 = new MDP(-5, false, true);
 
-		System.out.println(mdp);
+		System.out.println(mdp1);
+		System.out.println(mdp2);
+		System.out.println(mdp3);
+		System.out.println(mdp4);
 	}
 }
