@@ -7,10 +7,10 @@ import java.util.Collections;
 
 public class MDP{
 
-	private static List<Character> lstLettresMaj;
-	private static List<Character> lstLettresMin;
-	private static List<Integer>   lstChiffres;
-	private static List<Character> lstCarSpeciaux;
+	private static List<Character> lstLettresMaj  = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
+	private static List<Character> lstLettresMin  = new ArrayList<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'));
+	private static List<Integer>   lstChiffres    = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+	private static List<Character> lstCarSpeciaux = new ArrayList<>(Arrays.asList('!', '?', '"', '&', '#', '@', '(', ')', '[', ']', '$', '€', '|', '^', '%'));
 
 	private int     nbCar;
 	private boolean carSpeciaux;
@@ -18,22 +18,6 @@ public class MDP{
 	private String  motDePasse;
 
 	public MDP(int nbCar, boolean carSpeciaux, boolean chiffre ){
-		MDP.lstLettresMaj  = new ArrayList<Character>();
-		MDP.lstLettresMin  = new ArrayList<Character>();
-		MDP.lstChiffres    = new ArrayList<Integer>();
-		MDP.lstCarSpeciaux = new ArrayList<Character>();
-
-		for(char lettre = 'A'; lettre <= 'Z'; lettre++)
-			lstLettresMaj.add(lettre);
-
-		for(char lettre = 'a'; lettre <= 'z'; lettre++)
-			lstLettresMin.add(lettre);
-
-		for(int nb = 0; nb <= 9; nb++)
-			lstChiffres.add(nb);
-
-		lstCarSpeciaux.addAll(Arrays.asList('!', '?', '"', '&', '#', '@', '(', ')', '[', ']', '$', '€', '|', '^', '%'));
-
 		if(nbCar <= 0 || nbCar > 30)
 			nbCar = 10;
 		else
@@ -42,7 +26,7 @@ public class MDP{
 		this.carSpeciaux = carSpeciaux;
 		this.chiffre     = chiffre;
 
-		motDePasse = generer(nbCar, carSpeciaux, chiffre);
+		this.motDePasse = generer(nbCar, carSpeciaux, chiffre);
 	}
 
 	public String generer(int nbCar, boolean carSpeciaux, boolean chiffre){
@@ -56,7 +40,7 @@ public class MDP{
 
 		if(carSpeciaux & chiffre){
 			for(int i = 1; i <= nbCar; i++){
-				nbHasard = nbHasard4();
+				nbHasard = nbHasard(4);
 
 				switch (nbHasard){
 					case 1: 
@@ -82,7 +66,7 @@ public class MDP{
 
 		if(!carSpeciaux & chiffre){
 			for(int i = 1; i <= nbCar; i++){
-				nbHasard = nbHasard3();
+				nbHasard = nbHasard(3);
 
 				switch (nbHasard){
 					case 1: 
@@ -104,7 +88,7 @@ public class MDP{
 
 		if(carSpeciaux & !chiffre){
 			for(int i = 1; i <= nbCar; i++){
-				nbHasard = nbHasard3();
+				nbHasard = nbHasard(3);
 
 				switch (nbHasard){
 					case 1: 
@@ -126,7 +110,7 @@ public class MDP{
 
 		if(!carSpeciaux & !chiffre){
 			for(int i = 1; i <= nbCar; i++){
-				nbHasard = nbHasard2();
+				nbHasard = nbHasard(2);
 
 				switch (nbHasard){
 					case 1: 
@@ -145,9 +129,7 @@ public class MDP{
 		return mdp;
 	}
 
-	private int nbHasard2(){ return (int) (Math.random() * (2)) + 1; }
-	private int nbHasard3(){ return (int) (Math.random() * (3)) + 1; }
-	private int nbHasard4(){ return (int) (Math.random() * (4)) + 1; }
+	private int nbHasard(int nb){ return (int) (Math.random() * (nb)) + 1; }
 
 	public String toString(){ return motDePasse; }
 
