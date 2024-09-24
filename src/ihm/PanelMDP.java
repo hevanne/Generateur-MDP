@@ -1,11 +1,17 @@
 package ihm;
 
+import controleur.Controleur;
+
 import java.awt.Font;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class PanelMDP extends JPanel{
+public class PanelMDP extends JPanel implements ActionListener{
+	Controleur c;
+
 	private JPanel pnlHaut;
 	private JPanel pnlBas;
 	private JPanel pnlCentre;
@@ -17,7 +23,7 @@ public class PanelMDP extends JPanel{
 	private JCheckBox  cbCarSpeciaux;
 	private JButton    btnGenerer;
 
-	public PanelMDP(){
+	public PanelMDP(Controleur c){
 		this.setLayout(new BorderLayout());
 
 		this.pnlHaut   = new JPanel();
@@ -41,7 +47,7 @@ public class PanelMDP extends JPanel{
 		this.pnlHaut.add(this.lblTitre);
 		this.pnlCentre.add(this.lblExplications);
 
-		this.pnlCentre.add(new JLabel("Nombre de caractères : (max 35) "));
+		this.pnlCentre.add(new JLabel("Nombre de caractères : (max 30) "));
 		this.pnlCentre.add(this.txtNbCar);
 		this.pnlCentre.add(this.cbChiffres);
 		this.pnlCentre.add(this.cbCarSpeciaux);
@@ -51,5 +57,18 @@ public class PanelMDP extends JPanel{
 		this.add(this.pnlHaut  , BorderLayout.NORTH);
 		this.add(this.pnlCentre, BorderLayout.CENTER);
 		this.add(this.pnlBas   , BorderLayout.SOUTH);
+
+		this.btnGenerer.addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent e){
+		int nbCar           = Integer.parseInt(this.txtNbCar.getText());
+		boolean chiffre     = this.cbChiffres.   isSelected();
+		boolean carSpeciaux = this.cbCarSpeciaux.isSelected();
+
+		if(e.getSource() == this.btnGenerer){
+			String mdp = c.generer(nbCar, carSpeciaux, chiffre);
+			JOptionPane.showMessageDialog(this, "Votre mot de passe est : " + mdp);
+		}
 	}
 }
