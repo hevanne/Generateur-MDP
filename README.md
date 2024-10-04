@@ -2,9 +2,14 @@
 
 ## Table des matières
 
-- [Table des matières](#table-des-matières)
 - [Description](#description)
 - [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Contributions](#contributions)
+- [Licence](#licence)
+- [Remerciements](#remerciements)
+- [Auteur](#auteur)
+- [Version](#version)
 
 ## Description
 
