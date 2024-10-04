@@ -45,7 +45,7 @@ Les contributions sont les bienvenus. N'hésitez pas à forker le projet et à l
 
 ## Licence
 
-Ce projet est sous la licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous la licence MIT. Voir le fichier [LICENSE](https://github.com/hevanne/Generateur-MDP/blob/main/License) pour plus de détails.
 
 ## Remerciements
 
