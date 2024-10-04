@@ -9,10 +9,14 @@ public class Controleur{
 	MDP metier;
 
 	public Controleur(){
-		this.ihm = new FrameMDP();
+		this.ihm = new FrameMDP(this);
+		this.metier = new MDP(0, false, false, this);
 	}
 
 	public String generer(int nbCar, boolean carSpeciaux, boolean chiffre){
+		if(nbCar <= 0 || nbCar > 30)
+			return metier.generer(10, carSpeciaux, chiffre);
+
 		return metier.generer(nbCar, carSpeciaux, chiffre);
 	}
 

@@ -19,14 +19,14 @@ public class MDP{
 	private boolean chiffre;
 	private String  motDePasse;
 
-	public MDP(int nbCar, boolean carSpeciaux, boolean chiffre ){
-		if(nbCar <= 0 || nbCar > 30)
-			nbCar = 10;
-		else
-			this.nbCar       = nbCar;
-		
+	Controleur c;
+
+	public MDP(int nbCar, boolean carSpeciaux, boolean chiffre, Controleur c){
+		this.nbCar       = nbCar;
 		this.carSpeciaux = carSpeciaux;
 		this.chiffre     = chiffre;
+
+		this.c = c;
 
 		this.motDePasse = generer(nbCar, carSpeciaux, chiffre);
 	}

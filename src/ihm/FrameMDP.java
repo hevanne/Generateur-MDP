@@ -8,7 +8,9 @@ public class FrameMDP extends JFrame{
 	
 	Controleur c;
 
-	public FrameMDP(){
+	public FrameMDP(Controleur c){
+		this.c = c;
+		
 		this.setTitle("Générateur de mot de passe");
 		this.setSize(600, 400);
 		this.setLocation(50, 50);

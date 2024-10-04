@@ -24,6 +24,8 @@ public class PanelMDP extends JPanel implements ActionListener{
 	private JButton    btnGenerer;
 
 	public PanelMDP(Controleur c){
+		this.c = c;
+
 		this.setLayout(new BorderLayout());
 
 		this.pnlHaut   = new JPanel();
